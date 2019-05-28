@@ -24,7 +24,7 @@ public class MusicGroup {
 	@Min(1)
 	private int members;
 
-	@OneToMany(mappedBy = "musicGroup")
+	@OneToMany(mappedBy = "musicGroup",cascade = CascadeType.REMOVE)
 	private List<Vinyl> publishedVinylList;
 
 	public long getId() {

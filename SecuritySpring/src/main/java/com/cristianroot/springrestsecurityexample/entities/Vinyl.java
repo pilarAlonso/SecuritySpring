@@ -34,7 +34,7 @@ public class Vinyl {
 	@Min(1)
 	private double price;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private MusicGroup musicGroup;
 
 	@OneToMany(mappedBy = "vinyl",cascade = CascadeType.REMOVE)
