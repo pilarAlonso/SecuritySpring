@@ -42,7 +42,7 @@ public class ClientServiceImpl implements ClientService {
 		if (clientRepository.findByNameIgnoreCase(clientModel.getName()).isPresent())
 			throw new DuplicatedEntityException();
 		Client client = new Client();
-		client.setName(client.getName());
+		client.setName(clientModel.getName());
 		return ClientModel.from(clientRepository.save(client));
 	}
 

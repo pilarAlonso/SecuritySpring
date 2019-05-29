@@ -29,7 +29,7 @@ public class Client implements UserDetails {//usr details interfaz de spring seu
 
 	private List<Purchase> purchaseList;
 
-	@NotNull
+	//@NotNull
 	private String password;
 
 	@ManyToMany

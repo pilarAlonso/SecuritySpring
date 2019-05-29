@@ -44,15 +44,15 @@ public class VinylServiceImpl implements VinylService {
 
 	@Override
 	public VinylModel save(VinylModel vinylModel) throws DuplicatedEntityException, IdRequiredException, EntityNotFoundException {
-		if(vinylRepository.findByNameIgnoreCase(vinylModel.getName()).isPresent()) throw new DuplicatedEntityException();
-long groupId=vinylModel.getGroup().getId().orElseThrow(IdRequiredException::new);
+		if (vinylRepository.findByNameIgnoreCase(vinylModel.getName()).isPresent()) throw new DuplicatedEntityException();
+		long groupId = vinylModel.getGroup().getId().orElseThrow(IdRequiredException::new);
 
-Vinyl vinyl = new Vinyl();
+		Vinyl vinyl = new Vinyl();
 		vinyl.setName(vinylModel.getName());
 		vinyl.setPrice(vinylModel.getPrice());
 		vinyl.setSize(vinylModel.getVinylSize());
 		vinyl.setPublishDate(LocalDate.now());
-		vinyl.setMusicGroup(groupRepository.findById(groupId).orElseThrow(()-> new EntityNotFoundException(MusicGroup.class,groupId)));
+		vinyl.setMusicGroup(groupRepository.findById(groupId).orElseThrow(() -> new EntityNotFoundException(MusicGroup.class, groupId)));
 
 		return VinylModel.from(vinylRepository.save(vinyl));
 	}
@@ -60,23 +60,31 @@ Vinyl vinyl = new Vinyl();
 	@Override
 	public VinylModel update(long id, VinylModel vinylModel) throws EntityNotFoundException, DuplicatedEntityException, IdRequiredException, IllegalOperationException {
 		long modelId = vinylModel.getId().orElseThrow(IdRequiredException::new);
-
 		if (id != modelId)
 			throw new IllegalOperationException("IDs doesn't match");
-
 		Vinyl vinyl = vinylRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(Vinyl.class, id));
-		Optional<Vinyl> dupliatedVinyl=vinylRepository.findByNameIgnoreCase(vinylModel.getName());
-		long groupId=vinylModel.getGroup().getId().orElseThrow(DuplicatedEntityException::new);
-		if(dupliatedVinyl.isPresent()){if(dupliatedVinyl.get().getId()==vinyl.getId())throw new DuplicatedEntityException();}
+		Optional<Vinyl> duplicatedVinyl = vinylRepository.findByNameIgnoreCase(vinylModel.getName());
+		if (duplicatedVinyl.isPresent()) {
+			if (duplicatedVinyl.get().getId() != vinyl.getId()) {
+				throw new DuplicatedEntityException();
+			}
+		}
+		if (vinylRepository.findByNameIgnoreCase(vinylModel.getName()).isPresent())
+			throw new DuplicatedEntityException();
+
+		long groupId = vinylModel.getGroup().getId().orElseThrow(IdRequiredException::new);
+
 		vinyl.setName(vinylModel.getName());
 		vinyl.setPrice(vinylModel.getPrice());
 		vinyl.setSize(vinylModel.getVinylSize());
 		vinyl.setPublishDate(LocalDate.now());
-		vinyl.setMusicGroup(groupRepository.findById(groupId).orElseThrow(()-> new EntityNotFoundException(MusicGroup.class,id)));
-         //MusicGroup group=groupRepository.findById(id).orElseGet(MusicGroup::new);
-
+		vinyl.setMusicGroup(groupRepository.findById(groupId)
+										   .orElseThrow(() -> new EntityNotFoundException(MusicGroup.class, groupId)));
 		return VinylModel.from(vinylRepository.save(vinyl));
-	}
+
+
+
+}
 
 	@Override
 	public void delete(long id) throws EntityNotFoundException {
