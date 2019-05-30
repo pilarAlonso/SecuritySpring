@@ -11,9 +11,10 @@ import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationExc
 import com.cristianroot.springrestsecurityexample.models.BandModelSnapshot;
 import com.cristianroot.springrestsecurityexample.models.MusicGroupModel;
 import com.cristianroot.springrestsecurityexample.models.VinylModelSnapshot;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface GroupService {
 	BandModelSnapshot snapshot(BandModelSnapshot bandModelSnapshot) ;
 	List<MusicGroupModel> findAll();
