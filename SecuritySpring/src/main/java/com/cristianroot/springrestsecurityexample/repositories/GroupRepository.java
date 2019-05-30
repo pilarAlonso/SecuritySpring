@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface GroupRepository extends JpaRepository<MusicGroup, Long> {
 
 	Optional<MusicGroup> findByNameIgnoreCase(String name);
-	@Query("select m  from MusicGroup m join m.publishedVinylList v  join v.purcchaseList p  group by m.id order by  sum(p.quantity) desc\")")
+	@Query("select m  from MusicGroup m join m.publishedVinylList v  join v.purchaseList p  group by  m.id order by sum(p.quantity)")
 	List<MusicGroupModel> findTop5();
 
 }
