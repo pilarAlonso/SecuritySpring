@@ -37,6 +37,10 @@ public class AuthenticationController {
 	@PostMapping("/auth/login")
 	public AuthenticationResponse getToken(@Valid @RequestBody AuthenticationRequest authenticationRequest) {
 		// Let spring check the credentials and get the authorities
+		//busca en base de datos por el nombre y usuario para ver si coinciden.
+		//sobreescribimos el usedetails service es la entidad que usa para buscar los datos en base de dats(pregunta por finbyusername)
+
+		//de aqui se saca las autoridades del usuario que ha logeado
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
 														authenticationRequest.getPassword()));
@@ -47,7 +51,8 @@ public class AuthenticationController {
 												   .map(GrantedAuthority::getAuthority)
 												   .collect(Collectors.toList());
 		//authority list que devuelve?
-
+//puedes generar el token a mano
+		//jwt.io libreria jwts
 		// Create JWS token
 		String token = Jwts.builder()
 						   .signWith(Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes()))

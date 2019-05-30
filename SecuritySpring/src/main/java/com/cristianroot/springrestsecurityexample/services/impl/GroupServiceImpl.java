@@ -9,6 +9,7 @@ import com.cristianroot.springrestsecurityexample.exceptions.DuplicatedEntityExc
 import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundException;
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
+import com.cristianroot.springrestsecurityexample.models.BandModelSnapshot;
 import com.cristianroot.springrestsecurityexample.models.MusicGroupModel;
 import com.cristianroot.springrestsecurityexample.repositories.GroupRepository;
 import com.cristianroot.springrestsecurityexample.services.GroupService;
@@ -25,6 +26,13 @@ public class GroupServiceImpl implements GroupService {
 
 	public GroupServiceImpl(GroupRepository groupRepository) {
 		this.groupRepository = groupRepository;
+	}
+
+	@Override
+	public BandModelSnapshot snapshot(BandModelSnapshot bandModelSnapshot) {
+		bandModelSnapshot.setNumberGroup(groupRepository.count());
+		bandModelSnapshot.setFiveMostSoldGroup(groupRepository.findTop5());
+		return bandModelSnapshot;
 	}
 
 	@Override

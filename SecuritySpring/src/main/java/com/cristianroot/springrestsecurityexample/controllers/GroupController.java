@@ -8,6 +8,7 @@ import com.cristianroot.springrestsecurityexample.exceptions.DuplicatedEntityExc
 import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundException;
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
+import com.cristianroot.springrestsecurityexample.models.BandModelSnapshot;
 import com.cristianroot.springrestsecurityexample.models.MusicGroupModel;
 import com.cristianroot.springrestsecurityexample.services.GroupService;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class GroupController {
 
 	public GroupController(GroupService groupService) {
 		this.groupService = groupService;
+	}
+
+	@GetMapping("/groups/snapshot")
+	public BandModelSnapshot snapshot(BandModelSnapshot bandModelSnapshot)  {
+		return groupService.snapshot(bandModelSnapshot);
 	}
 
 	@GetMapping("/groups")

@@ -10,10 +10,12 @@ import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundExcep
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
 import com.cristianroot.springrestsecurityexample.models.VinylModel;
+import com.cristianroot.springrestsecurityexample.models.VinylModelSnapshot;
 
 import java.util.List;
 
 public interface VinylService {
+	VinylModelSnapshot snapshot(VinylModelSnapshot vinylModelSnapshot) ;
 
 	List<VinylModel> findAll();
 
@@ -24,5 +26,6 @@ public interface VinylService {
 	VinylModel update(long id, VinylModel vinylModel) throws EntityNotFoundException, DuplicatedEntityException, IdRequiredException, IllegalOperationException;
 
 	void delete(long id) throws EntityNotFoundException;
+
 
 }

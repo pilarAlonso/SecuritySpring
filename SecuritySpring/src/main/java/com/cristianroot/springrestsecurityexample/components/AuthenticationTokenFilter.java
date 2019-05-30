@@ -26,9 +26,9 @@ import java.util.stream.Collectors;
 
 @Component
 public class  AuthenticationTokenFilter extends BasicAuthenticationFilter {
-
+//oneperrequestFilter
 	private final JwtProperties jwtProperties;
-
+//hay diferebtes tipos de filtros e string este se ejecta una vez cada peticionq ue se hae
 	public AuthenticationTokenFilter(JwtProperties jwtProperties, AuthenticationManager authenticationManager) {
 		super(authenticationManager);
 		this.jwtProperties = jwtProperties;

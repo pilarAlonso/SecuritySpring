@@ -27,14 +27,14 @@ public class VinylModel {
 	@Size(min = 2)
 	private String name;
 	@NotNull
-	private VinylSize vinylSize;
+	private VinylSize size;
 
-	public VinylSize getVinylSize() {
-		return vinylSize;
+	public VinylSize getSize() {
+		return size;
 	}
 
-	public void setVinylSize(VinylSize vinylSize) {
-		this.vinylSize = vinylSize;
+	public void setSize(VinylSize size) {
+		this.size = size;
 	}
 
 	public static VinylModel from(Vinyl vinyl) {
@@ -43,7 +43,7 @@ public class VinylModel {
 		vinylModel.setName(vinyl.getName());
 		vinylModel.setPrice(vinyl.getPrice());
 		vinylModel.setGroup(MusicGroupModel.from(vinyl.getMusicGroup()));
-		vinylModel.setVinylSize(vinyl.getSize());
+		vinylModel.setSize(vinyl.getSize());
 		return vinylModel;
 	}
 

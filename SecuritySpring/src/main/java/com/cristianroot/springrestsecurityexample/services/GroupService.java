@@ -8,12 +8,14 @@ import com.cristianroot.springrestsecurityexample.exceptions.DuplicatedEntityExc
 import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundException;
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
+import com.cristianroot.springrestsecurityexample.models.BandModelSnapshot;
 import com.cristianroot.springrestsecurityexample.models.MusicGroupModel;
+import com.cristianroot.springrestsecurityexample.models.VinylModelSnapshot;
 
 import java.util.List;
 
 public interface GroupService {
-
+	BandModelSnapshot snapshot(BandModelSnapshot bandModelSnapshot) ;
 	List<MusicGroupModel> findAll();
 
 	MusicGroupModel findOne(long id) throws EntityNotFoundException;

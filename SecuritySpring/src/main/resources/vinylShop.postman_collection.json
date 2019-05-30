@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "05a3eda8-37f7-439a-bd44-a3fd771d9535",
+		"name": "vinylShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vinyl",
+			"item": [
+				{
+					"name": "find One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create vinyl",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"group\": {\n        \"id\": 1,\n        \"name\": \"Ramin Djawadi\",\n        \"members\": 1\n    },\n    \"price\": 15.95,\n    \"name\": \"Game of thrones\"}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/vinyls",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"vinyls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{API_URL}}/vinyls/1",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"price\":\n   \"nombre\":\n\t\n\t\n\t\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/vinyls/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"vinyls",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyVinyl",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"group\": {\n        \"id\": 3,\n        \"name\": \" eee\",\n        \"members\": 1\n    },\n    \"price\": 195,\n    \"name\": \"La land\",\n    \"vinylSize\": \"MINI\"\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/vinyls/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"vinyls",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"price\":\n   \"nombre\":\n\t\n\t\n\t\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/groups",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"price\":\n   \"nombre\":\n\t\n\t\n\t\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/groups/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"price\":\n   \"nombre\":\n\t\n\t\n\t\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/groups/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createGroup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \n        \"name\": \"Jus Hurwitz\",\n        \"members\": 1\n    }\n\t\n\t\n\t\n\t\n\t\n\t\n"
+						},
+						"url": {
+							"raw": "{{API_URL}}/groups",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyGroup",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Ramin jawadi\",\n    \"members\": 1\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/groups/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "findOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \n        \"name\": \"Jus Hurwitz\",\n        \"members\": 1\n    }\n\t\n\t\n\t\n\t\n\t\n\t\n"
+						},
+						"url": {
+							"raw": "{{API_URL}}/clients/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \n        \"name\": \"Jus Hurwitz\",\n        \"members\": 1\n    }\n\t\n\t\n\t\n\t\n\t\n\t\n"
+						},
+						"url": {
+							"raw": "{{API_URL}}/clients",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/clients/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createClient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"name\": \"Albeto\"\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/clients",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyClient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"id\": 1,\n    \"name\": \"Crian\"\n}\n\t\n\t\n\t\n\t\n\t\n"
+						},
+						"url": {
+							"raw": "{{API_URL}}/clients/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "{{API_URL}}/purchases",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"name\": \"Albeto\"\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/purchases",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"name\": \"Albeto\"\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/purchases/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"purchases",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{API_URL}}/purchases/1",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"name\": \"Albeto\"\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/purchases/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"purchases",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPurchase",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n  \n   \n    \"orderNumber\": \"CNV9643\",\n    \"client\": {\n        \"id\": 3,\n        \"name\": \"Elena\"\n    },\n    \"quantity\": 4,\n    \"vinyl\": {\n        \"id\": 3,\n        \"group\": {\n            \"id\": 3,\n            \"name\": \"Metallica\",\n            \"members\": 4\n        },\n        \"price\": 12.95,\n        \"name\": \"Master of Puppets\",\n        \"vinylSize\": \"STANDARD\"\n    },\n    \"purchaseDate\": null\n\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/purchases",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyPurchase",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n  \n   \"id\":4,\n    \"orderNumber\": \"CNV9643\",\n    \"client\": {\n        \"id\": 3,\n        \"name\": \"na\"\n    },\n    \"quantity\": 4,\n    \"vinyl\": {\n        \"id\": 3,\n        \"group\": {\n            \"id\": 3,\n            \"name\": \"Metallica\",\n            \"members\": 4\n        },\n        \"price\": 12.95,\n        \"name\": \"Master of Puppets\",\n        \"vinylSize\": \"STANDARD\"\n    },\n    \"purchaseDate\": null\n\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/purchases/4",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"purchases",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

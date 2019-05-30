@@ -9,6 +9,7 @@ import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundExcep
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
 import com.cristianroot.springrestsecurityexample.models.VinylModel;
+import com.cristianroot.springrestsecurityexample.models.VinylModelSnapshot;
 import com.cristianroot.springrestsecurityexample.services.VinylService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,10 @@ public class VinylController {
 	public VinylController(VinylService vinylService) {
 		this.vinylService = vinylService;
 	}
-
+	@GetMapping("/vinyls/snapshot")
+	public VinylModelSnapshot snapshot(VinylModelSnapshot vinylModelSnapshot)  {
+		return vinylService.snapshot(vinylModelSnapshot);
+	}
 	@GetMapping("/vinyls")
 	public List<VinylModel> findAll() {
 		return vinylService.findAll();

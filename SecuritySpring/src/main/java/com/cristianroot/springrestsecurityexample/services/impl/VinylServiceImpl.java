@@ -4,6 +4,7 @@
 
 package com.cristianroot.springrestsecurityexample.services.impl;
 
+import com.cristianroot.springrestsecurityexample.constants.VinylSize;
 import com.cristianroot.springrestsecurityexample.entities.MusicGroup;
 import com.cristianroot.springrestsecurityexample.entities.Vinyl;
 import com.cristianroot.springrestsecurityexample.exceptions.DuplicatedEntityException;
@@ -11,6 +12,7 @@ import com.cristianroot.springrestsecurityexample.exceptions.EntityNotFoundExcep
 import com.cristianroot.springrestsecurityexample.exceptions.IdRequiredException;
 import com.cristianroot.springrestsecurityexample.exceptions.IllegalOperationException;
 import com.cristianroot.springrestsecurityexample.models.VinylModel;
+import com.cristianroot.springrestsecurityexample.models.VinylModelSnapshot;
 import com.cristianroot.springrestsecurityexample.repositories.GroupRepository;
 import com.cristianroot.springrestsecurityexample.repositories.VinylRepository;
 import com.cristianroot.springrestsecurityexample.services.VinylService;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -30,6 +33,18 @@ public class VinylServiceImpl implements VinylService {
 	public VinylServiceImpl(VinylRepository vinylRepository, GroupRepository groupRepository) {
 		this.vinylRepository = vinylRepository;
 		this.groupRepository = groupRepository;
+	}
+
+	@Override
+	public VinylModelSnapshot snapshot(VinylModelSnapshot vinylModelSnapshot) {
+
+		vinylModelSnapshot.setVinilosNumber(vinylRepository.count());
+		vinylModelSnapshot.setFiveMostSold(vinylRepository.findTop5());
+		Map<VinylSize, Long> viniloLongMap = vinylRepository.findAll().stream()
+															.collect(Collectors.groupingBy(Vinyl::getSize, Collectors.counting()));
+
+		vinylModelSnapshot.setViniloLongMap(viniloLongMap);
+        return  vinylModelSnapshot;
 	}
 
 	@Override
@@ -50,7 +65,7 @@ public class VinylServiceImpl implements VinylService {
 		Vinyl vinyl = new Vinyl();
 		vinyl.setName(vinylModel.getName());
 		vinyl.setPrice(vinylModel.getPrice());
-		vinyl.setSize(vinylModel.getVinylSize());
+		vinyl.setSize(vinylModel.getSize());
 		vinyl.setPublishDate(LocalDate.now());
 		vinyl.setMusicGroup(groupRepository.findById(groupId).orElseThrow(() -> new EntityNotFoundException(MusicGroup.class, groupId)));
 
@@ -63,9 +78,9 @@ public class VinylServiceImpl implements VinylService {
 		if (id != modelId)
 			throw new IllegalOperationException("IDs doesn't match");
 		Vinyl vinyl = vinylRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(Vinyl.class, id));
-		Optional<Vinyl> duplicatedVinyl = vinylRepository.findByNameIgnoreCase(vinylModel.getName());
+		Optional<VinylModel> duplicatedVinyl = vinylRepository.findByNameIgnoreCase(vinylModel.getName());
 		if (duplicatedVinyl.isPresent()) {
-			if (duplicatedVinyl.get().getId() != vinyl.getId()) {
+			if (duplicatedVinyl.get().getId() != vinylModel.getId()) {
 				throw new DuplicatedEntityException();
 			}
 		}
@@ -76,7 +91,7 @@ public class VinylServiceImpl implements VinylService {
 
 		vinyl.setName(vinylModel.getName());
 		vinyl.setPrice(vinylModel.getPrice());
-		vinyl.setSize(vinylModel.getVinylSize());
+		vinyl.setSize(vinylModel.getSize());
 		vinyl.setPublishDate(LocalDate.now());
 		vinyl.setMusicGroup(groupRepository.findById(groupId)
 										   .orElseThrow(() -> new EntityNotFoundException(MusicGroup.class, groupId)));

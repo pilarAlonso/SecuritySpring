@@ -38,20 +38,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
 		this.jwtProperties = jwtProperties;
 	}
-//disponer el uso de autentication para el reto de clases
+//disponer el uso de autentication para el resto de clases
+	//antes era un bean por defecto
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 //encriptar ponerlo a disposiocion de las clases para inyetarse
+	//spring va avenir a recoger ese objeto aqui cada vez que se necesite crear para esto es la anotacion bean y solo lo re una vez porqu elo tiene en memoria de la primera vez que se a pedido
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 //pra que utilice paswor encoder y autentiation manager
 	//
+	//hace que use mi implementacion y no la implementaion por defecto
 	@Autowired
+	//configura user detailservce y password encoder
 	public void configureAuthenticationManager(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
